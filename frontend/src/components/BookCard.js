@@ -1,27 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Books.css";
-import { addBook, removeBook, addToWishlist, removeFromWishlist } from "../services/api"; // Import your API functions
+import { addBook, removeBook, addToWishlist, removeFromWishlist } from "../services/api";
 
-const BookCard = ({ username, book, booksRead, booksWishlist }) => {
-  const [booksReadList, setBooksReadList] = useState(booksRead);
+const BookCard = ({ username, book, booksRead, booksWishlist, updateBookState }) => {
   const [isRead, setIsRead] = useState(booksRead.includes(book.title));
   const [isInWishlist, setIsInWishlist] = useState(booksWishlist.includes(book.title));
   const [wishlistDisabled, setWishlistDisabled] = useState(isRead);
 
   useEffect(() => {
-    setWishlistDisabled(isRead); // Disable wishlist button if book is marked as read
-    // setBooksReadList([...booksReadList, book.title])
+    setWishlistDisabled(isRead);
   }, [isRead]);
-
-  const updateState = (type, value) => {
-    if (type === "read") {
-      setIsRead(value);
-      setWishlistDisabled(value); // Update wishlist state based on read status
-
-    } else if (type === "wishlist") {
-      setIsInWishlist(value);
-    }
-  };
 
   const handleApiRequest = async (apiFunction, successCallback, errorCallback) => {
     try {
@@ -36,7 +24,10 @@ const BookCard = ({ username, book, booksRead, booksWishlist }) => {
   const handleAddBook = () => {
     handleApiRequest(
       addBook,
-      () => updateState("read", true),
+      () => {
+        setIsRead(true);
+        updateBookState(book.title, "read", true);
+      },
       () => alert("Failed to mark book as read. Please try again.")
     );
   };
@@ -44,7 +35,10 @@ const BookCard = ({ username, book, booksRead, booksWishlist }) => {
   const handleRemoveBook = () => {
     handleApiRequest(
       removeBook,
-      () => updateState("read", false),
+      () => {
+        setIsRead(false);
+        updateBookState(book.title, "read", false);
+      },
       () => alert("Failed to unmark book as read. Please try again.")
     );
   };
@@ -52,7 +46,10 @@ const BookCard = ({ username, book, booksRead, booksWishlist }) => {
   const handleAddToWishlist = () => {
     handleApiRequest(
       addToWishlist,
-      () => updateState("wishlist", true),
+      () => {
+        setIsInWishlist(true);
+        updateBookState(book.title, "wishlist", true);
+      },
       () => alert("Failed to add book to wishlist. Please try again.")
     );
   };
@@ -60,7 +57,10 @@ const BookCard = ({ username, book, booksRead, booksWishlist }) => {
   const handleRemoveFromWishlist = () => {
     handleApiRequest(
       removeFromWishlist,
-      () => updateState("wishlist", false),
+      () => {
+        setIsInWishlist(false);
+        updateBookState(book.title, "wishlist", false);
+      },
       () => alert("Failed to remove book from wishlist. Please try again.")
     );
   };
@@ -83,22 +83,13 @@ const BookCard = ({ username, book, booksRead, booksWishlist }) => {
       <div className="book-card-button">
         <button
           className={isRead ? "button-read" : ""}
-          onClick={() => {
-            if (!isRead) handleAddBook();
-            else handleRemoveBook();
-            window.location.reload();
-          }}
+          onClick={isRead ? handleRemoveBook : handleAddBook}
         >
           {isRead ? "Read" : "Mark as Read"}
         </button>
         <button
           className={isInWishlist ? "button-wishlist" : ""}
-          onClick={() => {
-            if (!isInWishlist) handleAddToWishlist();
-            else handleRemoveFromWishlist();
-
-            window.location.reload();
-          }}
+          onClick={isInWishlist ? handleRemoveFromWishlist : handleAddToWishlist}
           disabled={wishlistDisabled}
         >
           {isInWishlist ? "In Wishlist" : "Add to Wishlist"}

@@ -6,6 +6,7 @@ import BooksPage from "./components/BooksPage";
 import Navbar from "./components/Navbar";
 import LoginPage from "./components/LoginPage";
 import RegisterPage from "./components/RegisterPage";
+import FollowsPage from "./components/FollowsPage";
 import "./App.css";
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
 
   return (
     <Router>
-      <Navbar token={token} />
+      {/* Pass setToken as a prop to Navbar */}
+      <Navbar token={token} setToken={setToken} />
       <Routes>
         <Route path="/" element={<DashboardPage />} />
         <Route path="/register" element={<RegisterPage setToken={setToken} />} />
@@ -31,6 +33,7 @@ function App() {
         <Route path="/profile" element={token ? <ProfilePage /> : <Navigate to="/login" />} />
         <Route path="/books" element={token ? <BooksPage /> : <Navigate to="/login" />} />
         <Route path="/logout" element={<Navigate to="/login" />} />
+        <Route path="/follows" element={token ? <FollowsPage /> : <Navigate to="/login" />} />
       </Routes>
     </Router>
   );

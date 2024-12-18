@@ -8,8 +8,10 @@ import booksRoutes from "./routes/books.js";
 import registerRoutes from "./routes/register.js";
 import loginRoutes from "./routes/login.js";
 
+import serverless from "serverless-http"
+
 const app = express();
-const PORT = 4000;
+// const PORT = 4000;
 
 // Enable CORS for your frontend (update the URL to match your frontend's origin)
 app.use(cors({
@@ -27,7 +29,8 @@ app.use("/login", loginRoutes);
 
 
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server running on http://localhost:${PORT}`);
+// });
 
+module.exports.handler = serverless(app);

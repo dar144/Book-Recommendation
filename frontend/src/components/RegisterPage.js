@@ -18,25 +18,21 @@ const RegisterPage = ({ setToken }) => {
           alert("Passwords do not match");
           return;
         }
-
-        // const response = await axios.post('http://localhost:4000/register', {
-        //     email: email,
-        //     username: username,
-        //     password: password
-        // });
-
-        const { data } = await register({email: email, username: username, password: password});
-        setToken(data.token);
-        navigate('/books');
-
-        // if(response.data.success) {
-        //     // Redirect to the specified page
-        //     navigate(response.data.redirect);
-        // }
-
-        console.log("Registering with", { email, password });
-        // Add your registration logic here (API call, etc.)
-    };
+      
+        try {
+          const { data } = await register({ email, username, password });
+          setToken(data.token);
+          navigate("/books");
+        } catch (err) {
+          if (err.response && err.response.status === 400) {
+            alert(err.response.data.message); // Show backend error message
+          } else {
+            console.error("Registration failed:", err);
+            alert("An error occurred. Please try again.");
+          }
+        }
+      };
+      
 
     return (
         <div className="auth-page">
