@@ -1,0 +1,170 @@
+/* General Styling */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f9fc;
+  color: #333;
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+}
+
+a {
+  text-decoration: none;
+  color: #4a90e2;
+}
+
+button {
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #3498db;
+  color: white;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #4a90e2;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #dfe6e9;
+}
+
+/* Dashboard */
+.dashboard {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.dashboard h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+.dashboard p {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  margin-top: 1rem;
+}
+
+/* Profile Section */
+.profile {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile h2 {
+  margin-bottom: 1rem;
+}
+
+.profile ul {
+  list-style: none;
+  padding: 0;
+}
+
+.profile ul li {
+  background: #ecf0f1;
+  margin: 0.5rem 0;
+  padding: 0.8rem;
+  border-radius: 5px;
+}
+
+
+
+/* Books Page */
+/* 
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.book-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.book-card h3 {
+  font-size: 1.5rem;
+  color: #34495e;
+}
+
+.book-card p {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+}
+
+.book-card button {
+  margin-right: 0.5rem;
+}
+
+
+.statistics {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.statistics h2 {
+  margin-bottom: 1rem;
+}
+
+.statistics ul {
+  list-style: none;
+  padding: 0;
+}
+
+.statistics ul li {
+  background: #ecf0f1;
+  margin: 0.5rem 0;
+  padding: 0.8rem;
+  border-radius: 5px;
+}
+
+
+button {
+  background-color: #4a90e2;
+  color: white;
+}
+
+button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+} */
