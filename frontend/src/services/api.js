@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:4000' });
+const apiUrl = 'https://8p1b8btyv4.execute-api.eu-north-1.amazonaws.com/prod';
+const API = axios.create({ baseURL: apiUrl });
 
 API.interceptors.request.use(
   (config) => {
