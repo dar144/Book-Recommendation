@@ -13,9 +13,9 @@ import serverless from "serverless-http"
 const app = express();
 // const PORT = 4000;
 
-// Enable CORS for your frontend (update the URL to match your frontend's origin)
+// Enable CORS for frontend 
 app.use(cors({
-  origin: 'http://localhost:3000',  // Or your frontend's URL
+  origin: 'http://localhost:3000',  
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
