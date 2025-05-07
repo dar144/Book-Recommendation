@@ -1,4 +1,6 @@
-## Data Base
+The app presents a book recommendation service that allows you to manage your reading progress. And based on the preferences of other users, the service will recommend books to read that are more likely to appeal to the user.
+
+## Database
 ![db-example](https://github.com/user-attachments/assets/358604fd-59e2-41a2-9ebc-4dee952f49fb)
 
 ## Welcome page
